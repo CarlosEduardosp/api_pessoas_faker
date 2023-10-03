@@ -21,7 +21,8 @@ async def select_all():
             'mensagem': faker.text(),
             'importante': False,
             'lido': False,
-            'lixeira': False
+            'lixeira': False,
+            'anexo': False
         }
 
         lista_dados.append(dados)
@@ -46,7 +47,8 @@ async def select_chosen_quantity(num: int):
             'mensagem': faker.text(),
             'importante': False,
             'lido': False,
-            'lixeira': False
+            'lixeira': False,
+            'anexo': False
         }
 
         lista_dados.append(dados)
