@@ -1,56 +1,50 @@
 from fastapi import APIRouter
-from faker import Faker
+from Functions import ListaPessoas, sortearBolean
 
 router = APIRouter()
 
-faker = Faker('pt_BR')  # chamando a função Faker com a sigla 'pt_BR' para retornar dados em portugues
+
+@router.get("/select_all_random")
+async def select_all_random():
+    """ Seleciona e retorna 100 pessoas por padrão, valores de [importante, lido, lixeira, anexo]
+    sortidos entre True e False """
+
+    response = ListaPessoas(sortear=True)
+
+    return {'success': True, 'data': response}
 
 
-@router.get("/")
+@router.get("/select_all")
 async def select_all():
-    """ Seleciona e retorna 100 pessoas por padrão """
+    """ Seleciona e retorna 100 pessoas por padrão, valores de [importante, lido, lixeira, anexo]
+    igual a False """
 
-    lista_dados = []
+    response = ListaPessoas()
 
-    for i in range(100):
-        dados = {
-            'id': i,
-            'nome': faker.name(),
-            'remetente': faker.email(),
-            'assunto': faker.city(),
-            'mensagem': faker.text(),
-            'importante': False,
-            'lido': False,
-            'lixeira': False,
-            'anexo': False
-        }
-
-        lista_dados.append(dados)
-
-    return {'success': True, 'data': lista_dados}
+    return {'success': True, 'data': response}
 
 
-@router.get("/{num}")
-async def select_chosen_quantity(num: int):
-    """ Passar quantidade de pessoas desejadas por parametro."""
+@router.get("/select_random/{num}")
+async def select_chosen_quantity_random(num: int):
+    """ Passar quantidade de pessoas desejadas por parametro, valores de [importante, lido, lixeira, anexo]
+    sortidos entre True e False"""
 
     num = int(num)
-    print(num)
-    lista_dados = []
 
-    for i in range(num):
-        dados = {
-            'id': i,
-            'nome': faker.name(),
-            'remetente': faker.email(),
-            'assunto': faker.city(),
-            'mensagem': faker.text(),
-            'importante': False,
-            'lido': False,
-            'lixeira': False,
-            'anexo': False
-        }
+    response = ListaPessoas(num, sortear=True)
 
-        lista_dados.append(dados)
+    return {'success': True, 'data': response}
 
-    return {'success': True, 'data': lista_dados}
+
+@router.get("/select_all/{num}")
+async def select_chosen_quantity(num: int):
+    """ Passar quantidade de pessoas desejadas por parametro, valores de [importante, lido, lixeira, anexo]
+    igual a False"""
+
+    num = int(num)
+
+    response = ListaPessoas(num)
+
+    return {'success': True, 'data': response}
+
+
