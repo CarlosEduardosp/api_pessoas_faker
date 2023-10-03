@@ -4,7 +4,7 @@ from Functions import ListaPessoas, sortearBolean
 router = APIRouter()
 
 
-@router.get("/select_all_random")
+@router.get("/")
 async def select_all_random():
     """ Seleciona e retorna 100 pessoas por padrão, valores de [importante, lido, lixeira, anexo]
     sortidos entre True e False """
