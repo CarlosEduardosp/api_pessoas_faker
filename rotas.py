@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from Functions import ListaPessoas, sortearBolean
+from Functions import ListaPessoas, sortearBolean, usuarios
 
 router = APIRouter()
 
@@ -9,7 +9,7 @@ async def select_all_random():
     """ Seleciona e retorna 100 pessoas por padrão, valores de [importante, lido, lixeira, anexo]
     sortidos entre True e False """
 
-    response = ListaPessoas(sortear=True)
+    response = usuarios(sortear=True)
 
     return {'success': True, 'data': response}
 
@@ -19,7 +19,7 @@ async def select_all():
     """ Seleciona e retorna 100 pessoas por padrão, valores de [importante, lido, lixeira, anexo]
     igual a False """
 
-    response = ListaPessoas()
+    response = usuarios()
 
     return {'success': True, 'data': response}
 
@@ -31,7 +31,7 @@ async def select_chosen_quantity_random(num: int):
 
     num = int(num)
 
-    response = ListaPessoas(num, sortear=True)
+    response = usuarios(num, sortear=True)
 
     return {'success': True, 'data': response}
 
@@ -43,7 +43,7 @@ async def select_chosen_quantity(num: int):
 
     num = int(num)
 
-    response = ListaPessoas(num)
+    response = usuarios(num)
 
     return {'success': True, 'data': response}
 
