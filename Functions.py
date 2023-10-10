@@ -66,7 +66,7 @@ def usuarios(num: int = 100, sortear: bool = False):
     response = ListaPessoas(num, sortear, 'administrador')
     administrador = {
         'nome': 'Administrador',
-        'Login': 12345678910,
+        'login': 12345678910,
         'senha': 123456,
         'data': response
     }
@@ -74,7 +74,7 @@ def usuarios(num: int = 100, sortear: bool = False):
     response = ListaPessoas(num, sortear, 'cliente1')
     cliente1 = {
         'nome': 'cliente1',
-        'Login': 123456,
+        'login': 123456,
         'senha': 654321,
         'data': response
     }
@@ -82,7 +82,7 @@ def usuarios(num: int = 100, sortear: bool = False):
     response = ListaPessoas(num, sortear, 'cliente2')
     cliente2 = {
         'nome': 'cliente2',
-        'Login': 987654321,
+        'login': 987654321,
         'senha': 111222333,
         'data': response
     }
