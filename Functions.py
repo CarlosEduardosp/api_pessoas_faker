@@ -68,6 +68,7 @@ def usuarios(num: int = 100, sortear: bool = False):
         'nome': 'Administrador',
         'login': 12345678910,
         'senha': 123456,
+        'email': faker.email(),
         'data': response
     }
 
@@ -76,6 +77,7 @@ def usuarios(num: int = 100, sortear: bool = False):
         'nome': 'cliente1',
         'login': 123456,
         'senha': 654321,
+        'email': faker.email(),
         'data': response
     }
 
@@ -84,6 +86,7 @@ def usuarios(num: int = 100, sortear: bool = False):
         'nome': 'cliente2',
         'login': 987654321,
         'senha': 111222333,
+        'email': faker.email(),
         'data': response
     }
 
